@@ -6,10 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.co.sbsa.assesment.poke.api.model.Pokemon;
-import za.co.sbsa.assesment.poke.api.model.Pokemons;
 import za.co.sbsa.assesment.poke.api.service.PokeApiService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

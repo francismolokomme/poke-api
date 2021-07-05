@@ -1,0 +1,191 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Poke Api Documentation",
+    "version": "1.0",
+    "title": "Poke Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {
+      "name": "Nare Francis Molokomme",
+      "email": "francis@molokomme.co.za"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "poke-api-rest",
+      "description": "Poke Api Rest"
+    }
+  ],
+  "paths": {
+    "/api/v2/pokemon/{id}": {
+      "get": {
+        "tags": [
+          "poke-api-rest"
+        ],
+        "summary": "getPokemonById",
+        "operationId": "getPokemonByIdUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Pokemon"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/v2/pokemons": {
+      "get": {
+        "tags": [
+          "poke-api-rest"
+        ],
+        "summary": "getPokemons",
+        "operationId": "getPokemonsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pokemon"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "Abilities": {
+      "type": "object",
+      "properties": {
+        "ability": {
+          "$ref": "#/definitions/Ability"
+        },
+        "is_hidden": {
+          "type": "boolean"
+        },
+        "slot": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Abilities"
+    },
+    "Ability": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "title": "Ability"
+    },
+    "DreamWorld": {
+      "type": "object",
+      "properties": {
+        "front_default": {
+          "type": "string"
+        }
+      },
+      "title": "DreamWorld"
+    },
+    "Other": {
+      "type": "object",
+      "properties": {
+        "dream_world": {
+          "$ref": "#/definitions/DreamWorld"
+        }
+      },
+      "title": "Other"
+    },
+    "Pokemon": {
+      "type": "object",
+      "properties": {
+        "abilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Abilities"
+          }
+        },
+        "base_experience": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "height": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "sprites": {
+          "$ref": "#/definitions/Sprites"
+        },
+        "weight": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Pokemon"
+    },
+    "Sprites": {
+      "type": "object",
+      "properties": {
+        "other": {
+          "$ref": "#/definitions/Other"
+        }
+      },
+      "title": "Sprites"
+    }
+  }
+}
