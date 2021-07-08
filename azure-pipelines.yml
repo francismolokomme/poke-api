@@ -31,6 +31,28 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - task: Maven@3
+      displayName: Clean and Package application
+      inputs:
+        mavenPomFile: 'pom.xml'
+        goals: 'clean package'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        codeCoverageToolOption: 'JaCoCo'
+        codeCoverageClassFilesDirectories: 'target/classes'
+        codeCoverageSourceDirectories: 'src/main/java,  src/test/java'
+        codeCoverageFailIfEmpty: true
+        codeCoverageRestoreOriginalPomXml: true
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: true
+        isJacocoCoverageReportXML: true
+        sqMavenPluginVersionChoice: 'latest'
+        checkStyleRunAnalysis: true
+        pmdRunAnalysis: true
+        findBugsRunAnalysis: true
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
