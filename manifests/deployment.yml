@@ -16,4 +16,4 @@ spec:
         - name: pokeapi 
           image: pokeapireg.azurecr.io/pokeapi
           ports:
-          - containerPort: 80
+          - containerPort: 8080

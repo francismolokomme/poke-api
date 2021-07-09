@@ -11,8 +11,8 @@ import za.co.sbsa.assesment.poke.api.service.PokeApiService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/api/v2")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8081"})
 public class PokeApiRest {
     @Autowired
     PokeApiService pokeApiService;
