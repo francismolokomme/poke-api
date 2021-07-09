@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v2")
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8081"})
+@CrossOrigin
 public class PokeApiRest {
     @Autowired
     PokeApiService pokeApiService;
